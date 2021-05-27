@@ -22,7 +22,7 @@
 package caatsoft.studio.com.gamecatalog
 
 import android.app.Application
-import caatsoft.studio.com.gamecatalog.di.networkModule
+import caatsoft.studio.com.gamecatalog.di.networkModule2
 import caatsoft.studio.com.gamecatalog.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -35,7 +35,7 @@ class StartApp : Application() {
     startKoin {
       androidLogger()
       androidContext(this@StartApp)
-      modules(listOf(networkModule, viewModelModule))
+      modules(listOf(networkModule2, viewModelModule))
     }
   }
 }
