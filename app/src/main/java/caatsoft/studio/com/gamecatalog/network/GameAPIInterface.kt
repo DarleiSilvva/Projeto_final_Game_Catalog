@@ -15,15 +15,15 @@ interface GameAPIInterface {
           @Query("format") format: String
   ): Call<GameResponse>*/
 
+  /*@GET("games/?api_key=$API_KEY")
+  suspend fun getFilteredGames(
+          @Query("format") format: String,
+          @Query("field_list") field_list : String
+  ): GameResponse2*/
+
   @GET("games/?api_key=$API_KEY")
   suspend fun getFilteredGames(
           @Query("format") format: String,
           @Query("field_list") field_list : String
-  ): GameResponse2
-
-  /*@GET("games/?api_key=$API_KEY")
-  fun getFilteredGames(
-          @Query("format") format: String,
-          @Query("field_list") field_list : String
-  ): Call<GameResponse2>*/
+  ): Call<GameResponse2>
 }

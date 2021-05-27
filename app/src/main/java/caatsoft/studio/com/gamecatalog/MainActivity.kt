@@ -2,14 +2,14 @@ package caatsoft.studio.com.gamecatalog
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProviders
 import caatsoft.studio.com.gamecatalog.databinding.ActivityMainBinding
 import caatsoft.studio.com.gamecatalog.network.GameResponse2
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.KoinComponent
 
 
 class MainActivity : AppCompatActivity(), MainView, KoinComponent{
-    //private val viewModel: MainViewModel by viewModels(),
+    private val mainViewModel: MainViewModel by viewModel()
 
     lateinit var activityMainBinding: ActivityMainBinding
 
@@ -17,9 +17,9 @@ class MainActivity : AppCompatActivity(), MainView, KoinComponent{
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
-        val viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        viewModel.view = this
-        viewModel.getFilteredGames()
+
+        mainViewModel.view = this
+        mainViewModel.getFilteredGames()
     }
 
     override fun getFilteredGames(GameResponse: GameResponse2) {

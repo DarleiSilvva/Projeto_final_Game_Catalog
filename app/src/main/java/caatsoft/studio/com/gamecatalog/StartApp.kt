@@ -22,24 +22,20 @@
 package caatsoft.studio.com.gamecatalog
 
 import android.app.Application
-import caatsoft.studio.com.gamecatalog.di.appModule
 import caatsoft.studio.com.gamecatalog.di.networkModule
-import org.koin.android.ext.android.inject
+import caatsoft.studio.com.gamecatalog.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 class StartApp : Application() {
 
-  val defaultCurrentActivityListener: DefaultCurrentActivityListener by inject()
-
   override fun onCreate() {
     super.onCreate()
     startKoin {
       androidLogger()
       androidContext(this@StartApp)
-      modules(listOf(networkModule, appModule))
+      modules(listOf(networkModule, viewModelModule))
     }
-    registerActivityLifecycleCallbacks(defaultCurrentActivityListener)
   }
 }
