@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import caatsoft.studio.com.gamecatalog.databinding.ModelBinding
+import caatsoft.studio.com.gamecatalog.network.Game
 import com.bumptech.glide.Glide
 
 
@@ -21,10 +23,11 @@ class GameAdapter(val context: Context, val gameListData: List<Game>):RecyclerVi
 
     override fun onBindViewHolder(holder: GameAdapterHolder, position: Int) {
         holder.binding.nameText.text = gameListData[position].name
-        Glide.with(context).load(gameListData[position].image.icon_url).into(holder.binding.gameImage)
+        Glide.with(context).load(gameListData[position].image.icon_url).into(holder.binding.iconGameImage)
         holder.binding.deckText.text = gameListData[position].deck
-        if (gameListData[position].original_release_date == "null"){
+        if (gameListData[position].original_release_date == null){
             holder.binding.originalReleaseDateText.text = "Data de lançamento não informada!"
+            holder.binding.originalReleaseDateText.textSize = 12F
         } else{
             holder.binding.originalReleaseDateText.text = gameListData[position].original_release_date
         }

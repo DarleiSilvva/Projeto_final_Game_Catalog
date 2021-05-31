@@ -1,4 +1,4 @@
-package com.test.testtwo.ui
+package caatsoft.studio.com.gamecatalog.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.test.testtwo.databinding.FragmentUserBinding
+import caatsoft.studio.com.gamecatalog.databinding.FragmentUserBinding
 import com.test.testtwo.viewmodel.UserViewModel
 
 class UserFragment : Fragment() {

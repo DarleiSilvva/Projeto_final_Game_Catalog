@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import caatsoft.studio.com.gamecatalog.adapter.GameAdapter
-import com.test.testtwo.databinding.FragmentGamesBinding
+import caatsoft.studio.com.gamecatalog.databinding.FragmentGamesBinding
 import com.test.testtwo.viewmodel.GamesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

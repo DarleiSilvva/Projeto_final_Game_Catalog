@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.test.testtwo.network.Game
-import com.test.testtwo.network.Repository
+import caatsoft.studio.com.gamecatalog.network.Game
+import caatsoft.studio.com.gamecatalog.network.Repository
 import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 

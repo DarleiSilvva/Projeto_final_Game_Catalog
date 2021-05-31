@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.test.testtwo.databinding.FragmentFavoriteBinding
+import caatsoft.studio.com.gamecatalog.databinding.FragmentFavoriteBinding
 import com.test.testtwo.viewmodel.FavoriteViewModel
 
 class FavoriteFragment : Fragment() {

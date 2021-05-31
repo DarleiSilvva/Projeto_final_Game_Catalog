@@ -1,18 +1,14 @@
 package caatsoft.studio.com.gamecatalog.di
 
-import androidx.core.app.CoreComponentFactory
-import caatsoft.studio.com.gamecatalog.BuildConfig
 import caatsoft.studio.com.gamecatalog.network.GameAPIInterface
 import caatsoft.studio.com.gamecatalog.network.Repository
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.BuildConfig
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 val networkModule = module {

@@ -1,4 +1,4 @@
-package com.test.testtwo
+package caatsoft.studio.com.gamecatalog
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,8 +8,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import caatsoft.studio.com.gamecatalog.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.test.testtwo.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.model.view.*
 
 
 class MainActivity : AppCompatActivity() {
