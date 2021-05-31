@@ -12,41 +12,23 @@ import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-interface MainView {
-  fun getFilteredGames(gameResponse: GameResponse)
-}
-
-class MainViewModel : ViewModel(), KoinComponent {
-  var view: MainView? = null
-  private val repository:Repository by inject()
-  //val gameListLiveData = MutableLiveData<List<Game>>()
-
-  val games: MutableLiveData<List<Game>> by lazy {
-    MutableLiveData<List<Game>>().also {
-      loadGames()
-    }
-  }
-
-  fun getGames(): LiveData<List<Game>> {
-    return games
-  }
-
-  private fun loadGames() {
-    getFilteredGames()
-  }
+class MainViewModel (private val repository:Repository) : ViewModel(), KoinComponent {
+  private val gameListLiveData = MutableLiveData<List<Game>>()
+  val games  = gameListLiveData as LiveData<List<Game>>
 
   fun getFilteredGames() {
-
-    viewModelScope.launch(Dispatchers.IO) {
-      val filteredGamesResponse = repository.getFilteredGames("json", "name,deck,platforms,original_release_date,image")
+    viewModelScope.launch {
+      val filteredGamesResponse = repository.getFilteredGames(FORMAT, FIELD_LIST)
       if (filteredGamesResponse.isSuccessful){
         filteredGamesResponse.body()?.let { gameResponse ->
-          games.value = gameResponse.results
-          view?.getFilteredGames(gameResponse)
+          gameListLiveData.value = gameResponse.results
         }
       }
     }
   }
-
+  companion object {
+    private const val FORMAT = "json"
+    private const val FIELD_LIST = "name,deck,platforms,original_release_date,image"
+  }
 }
 
