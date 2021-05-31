@@ -1,13 +1,18 @@
-package caatsoft.studio.com.gamecatalog
+package com.test.testtwo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import caatsoft.studio.com.gamecatalog.databinding.ActivityMainBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.test.testtwo.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.model.view.*
 
 
 class MainActivity : AppCompatActivity() {
-    private val mainViewModel: MainViewModel by viewModel()
     private lateinit var activityMainBinding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,10 +20,17 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)
 
-        mainViewModel.games.observe(this, { gamesList ->
-            activityMainBinding.textView.text = gamesList[0].deck
-        })
-        mainViewModel.getFilteredGames()
-    }
-}
+        val navView: BottomNavigationView = activityMainBinding.navView
 
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_games, R.id.navigation_favorite, R.id.navigation_user
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+    }
+
+
+}
