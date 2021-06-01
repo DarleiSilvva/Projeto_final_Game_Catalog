@@ -29,7 +29,7 @@ class GamesFragment : Fragment() {
         gamesViewModel.games.observe(viewLifecycleOwner, { gamesList ->
             val mLayoutManager = GridLayoutManager( this.context, 2)
             _binding?.gameRecyclerview?.layoutManager = mLayoutManager;
-            gameAdapter = GameAdapter(this.requireContext(), gamesList)
+            gameAdapter = GameAdapter(this.requireContext(), gamesList, layoutInflater)
             _binding?.gameRecyclerview?.adapter = gameAdapter
         })
         gamesViewModel.getFilteredGames()

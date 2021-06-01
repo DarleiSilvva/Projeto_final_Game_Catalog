@@ -3,4 +3,7 @@
     <string name="title_games">Games</string>
     <string name="title_favorite">Favorite</string>
     <string name="title_user">User</string>
+    <string name="description_not_informed">Description not informed!</string>
+    <string name="release_date_not_informed">Release date not informed!</string>
+    <string name="it_is_among_the_favourites">It is among the favourites!</string>
 </resources>
