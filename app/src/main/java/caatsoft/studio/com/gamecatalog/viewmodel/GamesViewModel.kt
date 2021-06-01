@@ -1,4 +1,4 @@
-package com.test.testtwo.viewmodel
+package caatsoft.studio.com.gamecatalog.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +9,7 @@ import caatsoft.studio.com.gamecatalog.network.Repository
 import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 
-class GamesViewModel (private val repository: Repository) : ViewModel(), KoinComponent {
+class GamesViewModel (private val repository: Repository) : ViewModel() {
   private val gameListLiveData = MutableLiveData<List<Game>>()
   val games  = gameListLiveData as LiveData<List<Game>>
 

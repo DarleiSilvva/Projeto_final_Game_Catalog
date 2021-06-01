@@ -4,36 +4,32 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import caatsoft.studio.com.gamecatalog.databinding.FragmentFavoriteBinding
-import com.test.testtwo.viewmodel.FavoriteViewModel
+import caatsoft.studio.com.gamecatalog.viewmodel.FavoriteViewModel
 
 class FavoriteFragment : Fragment() {
 
-    private lateinit var favoriteViewModel: FavoriteViewModel
+    private val favoriteViewModel: FavoriteViewModel by viewModels()
     private var _binding: FragmentFavoriteBinding? = null
 
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        favoriteViewModel =
-            ViewModelProvider(this).get(FavoriteViewModel::class.java)
+    ): View {
 
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textFavorite
-        favoriteViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        favoriteViewModel.textFavorite.observe(viewLifecycleOwner, {
+            _binding?.textFavorite?.text = it.toString()
         })
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {

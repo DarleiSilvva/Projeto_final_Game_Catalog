@@ -1,13 +1,11 @@
-package com.test.testtwo.viewmodel
+package caatsoft.studio.com.gamecatalog.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class FavoriteViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
+    val textFavorite = MutableLiveData<String>().apply {
         value = "This is favorite Fragment"
     }
-    val text: LiveData<String> = _text
 }

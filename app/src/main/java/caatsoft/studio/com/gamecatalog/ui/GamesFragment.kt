@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import caatsoft.studio.com.gamecatalog.adapter.GameAdapter
 import caatsoft.studio.com.gamecatalog.databinding.FragmentGamesBinding
-import com.test.testtwo.viewmodel.GamesViewModel
+import caatsoft.studio.com.gamecatalog.viewmodel.GamesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GamesFragment : Fragment() {
@@ -24,6 +24,8 @@ class GamesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+        _binding = FragmentGamesBinding.inflate(inflater, container, false)
+
         gamesViewModel.games.observe(viewLifecycleOwner, { gamesList ->
             val mLayoutManager = GridLayoutManager( this.context, 2)
             _binding?.gameRecyclerview?.layoutManager = mLayoutManager;
@@ -31,8 +33,6 @@ class GamesFragment : Fragment() {
             _binding?.gameRecyclerview?.adapter = gameAdapter
         })
         gamesViewModel.getFilteredGames()
-
-        _binding = FragmentGamesBinding.inflate(inflater, container, false)
 
         return binding.root
     }
