@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import caatsoft.studio.com.gamecatalog.GameCatalog
 import caatsoft.studio.com.gamecatalog.R
 import caatsoft.studio.com.gamecatalog.adapter.FavoriteGameAdapter
 import caatsoft.studio.com.gamecatalog.databinding.BottomModelBinding
@@ -23,6 +24,7 @@ class FavoriteFragment : Fragment(), FavoriteGameAdapter.GameClickListener {
     private val favoriteViewModel: FavoriteViewModel by viewModels()
     private var _binding: FragmentFavoriteBinding? = null
     private lateinit var favoriteGameAdapter: FavoriteGameAdapter
+    private val repository by lazy { GameCatalog.repository }
 
     private val binding get() = _binding!!
 
@@ -77,9 +79,21 @@ class FavoriteFragment : Fragment(), FavoriteGameAdapter.GameClickListener {
         bottomModelBinding.favoriteImageView.setImageResource(R.drawable.ic_baseline_favorite_24)
 
         bottomModelBinding.favoriteImageView.setOnClickListener {
-            bottomModelBinding.favoriteImageView.setImageResource(R.drawable.ic_baseline_favorite_border_24)
-            Toast.makeText(context,
-                context?.resources?.getString(R.string.it_is_not_among_the_favourites), Toast.LENGTH_LONG).show()
+            if (!favoriteGame.name.isNullOrBlank() && !favoriteGame.deck.isNullOrBlank()
+                && !favoriteGame.original_release_date.isNullOrBlank() && !favoriteGame.platforms.isNullOrBlank()
+                && !favoriteGame.image.isNullOrBlank()) {
+                val favoriteGame = FavoriteGame(
+                    name = favoriteGame.name,
+                    deck = favoriteGame.deck,
+                    original_release_date = favoriteGame.original_release_date,
+                    platforms = favoriteGame.platforms,
+                    image = favoriteGame.image)
+
+                repository.removeGame(favoriteGame)
+                bottomModelBinding.favoriteImageView.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                Toast.makeText(context, context?.resources?.getString(R.string.it_is_not_among_the_favourites), Toast.LENGTH_LONG).show()
+                favoriteViewModel.getGames()
+            }
         }
         dialog.show ()
     }

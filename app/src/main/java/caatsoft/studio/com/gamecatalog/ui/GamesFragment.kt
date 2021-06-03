@@ -12,14 +12,12 @@ import caatsoft.studio.com.gamecatalog.R
 import caatsoft.studio.com.gamecatalog.adapter.GameAdapter
 import caatsoft.studio.com.gamecatalog.databinding.BottomModelBinding
 import caatsoft.studio.com.gamecatalog.databinding.FragmentGamesBinding
-import caatsoft.studio.com.gamecatalog.network.Game
+import caatsoft.studio.com.gamecatalog.network.model.Game
 import caatsoft.studio.com.gamecatalog.network.model.FavoriteGame
-import caatsoft.studio.com.gamecatalog.repository.FavoriteRepositoryImpl
 import caatsoft.studio.com.gamecatalog.viewmodel.GamesViewModel
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
 
 class GamesFragment : Fragment(), GameAdapter.GameClickListener {
 

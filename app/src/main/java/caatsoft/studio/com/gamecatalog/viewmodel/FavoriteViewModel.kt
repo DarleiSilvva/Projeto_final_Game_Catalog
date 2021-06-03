@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import caatsoft.studio.com.gamecatalog.GameCatalog
-import caatsoft.studio.com.gamecatalog.network.Game
 import caatsoft.studio.com.gamecatalog.network.model.FavoriteGame
 import kotlinx.coroutines.launch
 

@@ -1,7 +1,7 @@
 package caatsoft.studio.com.gamecatalog.repository
 
 import caatsoft.studio.com.gamecatalog.network.GameAPIInterface
-import caatsoft.studio.com.gamecatalog.network.GameResponse
+import caatsoft.studio.com.gamecatalog.network.model.GameResponse
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import retrofit2.Response
