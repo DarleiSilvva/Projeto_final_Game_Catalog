@@ -1,7 +1,7 @@
 package caatsoft.studio.com.gamecatalog.di
 
 import caatsoft.studio.com.gamecatalog.network.GameAPIInterface
-import caatsoft.studio.com.gamecatalog.network.Repository
+import caatsoft.studio.com.gamecatalog.repository.Repository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.BuildConfig

@@ -6,4 +6,6 @@
     <string name="description_not_informed">Description not informed!</string>
     <string name="release_date_not_informed">Release date not informed!</string>
     <string name="it_is_among_the_favourites">It is among the favourites!</string>
+    <string name="it_is_not_among_the_favourites">It is NOT among the favourites!</string>
+    <string name="there_has_been_missing">There has been missing!</string>
 </resources>

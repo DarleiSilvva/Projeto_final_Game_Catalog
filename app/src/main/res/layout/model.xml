@@ -24,7 +24,7 @@
         <ImageView
             android:id="@+id/iconGameImage"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="220dp"
             android:paddingBottom="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,20 +52,8 @@
                 android:paddingEnd="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textSize="23sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/deckText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:fontFamily="@font/bangers"
-                android:hint="deck"
-                android:paddingStart="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/originalReleaseDateText"

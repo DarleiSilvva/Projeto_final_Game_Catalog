@@ -1,4 +1,4 @@
-package caatsoft.studio.com.gamecatalog.network
+package caatsoft.studio.com.gamecatalog.repository
 
 import caatsoft.studio.com.gamecatalog.network.GameAPIInterface
 import caatsoft.studio.com.gamecatalog.network.GameResponse
