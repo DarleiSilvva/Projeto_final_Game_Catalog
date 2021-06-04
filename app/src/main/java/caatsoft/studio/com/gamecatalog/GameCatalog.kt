@@ -6,6 +6,7 @@ import caatsoft.studio.com.gamecatalog.di.networkModule
 import caatsoft.studio.com.gamecatalog.di.viewModelModule
 import caatsoft.studio.com.gamecatalog.repository.FavoriteRepository
 import caatsoft.studio.com.gamecatalog.repository.FavoriteRepositoryImpl
+import com.google.firebase.database.FirebaseDatabase
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -28,12 +29,13 @@ class GameCatalog : Application() {
 
   override fun onCreate() {
     super.onCreate()
-    instance = this
-
     startKoin {
       androidLogger()
       androidContext(this@GameCatalog)
       modules(listOf(networkModule, viewModelModule))
     }
+    instance = this
+
+    FirebaseDatabase.getInstance().setPersistenceEnabled(true)
   }
 }

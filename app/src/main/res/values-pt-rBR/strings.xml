@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Game Catalog </string>
+    <string name="title_games">Jogos</string>
+    <string name="title_favorite">Favoritos</string>
+    <string name="title_user">Usuário</string>
+    <string name="description_not_informed">Descrição não informada!</string>
+    <string name="release_date_not_informed">Data de lançamento não informada!</string>
+    <string name="it_is_among_the_favourites">Está entre os favoritos!</string>
+    <string name="it_is_not_among_the_favourites">NÃO está entre os favoritos!</string>
+    <string name="there_has_been_missing">Estão faltando dados!</string>
+    <string name="please_fill_in_what_is_missing">Por favor, preencha o que está faltando!</string>
+    <string name="there_was_an_authentication_error_please_try_to_register_again_or_try_to_login">Ocorreu um erro de autenticação! Por favor, tente se registrar novamente ou faça o login!</string>
+    <string name="choose_the_photo_for_the_profile">Escolha a foto do perfil!</string>
+    <string name="all_must_be_filled_in">Todos devem ser preenchidos!</string>
+    <string name="enter_a_valid_email_address">Digite um endereço de e-mail válido!</string>
+    <string name="register_another_email_or_go_to_the_login_screen_to_see_if_this_one_is_already_registered">Cadastre outro email ou acesse a tela de login para ver se esse já está cadastrado!</string>
+    <string name="it_s_almost_over">Está quase acabando...</string>
+    <string name="put_your_name_here">Coloque seu nome aqui</string>
+    <string name="email">Email</string>
+    <string name="password">Senha</string>
+    <string name="register">Cadastro</string>
+    <string name="please_login_below">Faça o login abaixo!</string>
+    <string name="put_your_email_here">Coloque seu email aqui</string>
+    <string name="put_your_password_here">coloque sua senha aqui</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account_create_here">Não tem uma conta? Crie aqui!</string>
+    <string name="user_name">Nome do usuário</string>
+    <string name="logout">Sair</string>
+</resources>
