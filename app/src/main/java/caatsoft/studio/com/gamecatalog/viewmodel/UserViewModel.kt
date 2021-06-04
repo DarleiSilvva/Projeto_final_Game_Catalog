@@ -19,20 +19,23 @@ class UserViewModel : ViewModel() {
     val urlImage  = urlImageLiveData as LiveData<String>
 
     fun getDataUser() {
-        FirebaseDatabase.getInstance().reference.child(PATH_USER).
-        addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (data in dataSnapshot.children) {
-                    if (data.child(PATH_ID).value.toString() == FirebaseAuth.getInstance().uid.toString()){
-                        userNameLiveData.value = data.child(PATH_USE_NAME).value.toString()
-                        urlImageLiveData.value = data.child(PATH_URL_IMAGE).value.toString()
+        viewModelScope.launch {
+            FirebaseDatabase.getInstance().reference.child(PATH_USER)
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        for (data in dataSnapshot.children) {
+                            if (data.child(PATH_ID).value.toString() == FirebaseAuth.getInstance().uid.toString()) {
+                                userNameLiveData.value = data.child(PATH_USE_NAME).value.toString()
+                                urlImageLiveData.value = data.child(PATH_URL_IMAGE).value.toString()
+                            }
+                        }
                     }
-                }
-            }
-            override fun onCancelled(databaseError: DatabaseError) {
-                throw databaseError.toException()
-            }
-        })
+
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        throw databaseError.toException()
+                    }
+                })
+        }
     }
     companion object {
         private const val PATH_USE_NAME = "userName"
