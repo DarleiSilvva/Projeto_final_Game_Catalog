@@ -28,18 +28,15 @@ import java.io.IOException
 import java.util.*
 
 
-@Suppress("DEPRECATION")
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var firebaseDatabase: FirebaseDatabase
     private lateinit var databaseReference: DatabaseReference
     private lateinit var dataUser: DataUser
-    val CHOOSE_PHOTO = 1
     private lateinit var resultUri: Uri
     private lateinit var activityRegisterBinding: ActivityRegisterBinding
     var verifyPermission = false
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityRegisterBinding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -61,7 +58,7 @@ class RegisterActivity : AppCompatActivity() {
         if (verifyPermission) {
             val choosePhoto = Intent(Intent.ACTION_GET_CONTENT)
             choosePhoto.type = TYPE_DATA
-            startActivityForResult(Intent.createChooser(choosePhoto, getString(R.string.choose_the_photo_for_the_profile)), CHOOSE_PHOTO)
+            startActivityForResult(Intent.createChooser(choosePhoto, getString(R.string.choose_the_photo_for_the_profile)), REQUEST_CODE)
         }else{
             applyVerifyPermissions()
         }
@@ -85,25 +82,27 @@ class RegisterActivity : AppCompatActivity() {
                             Toast.makeText(this@RegisterActivity, getString(R.string.enter_a_valid_email_address), Toast.LENGTH_LONG).show()
                         }
                     }
-                    .addOnFailureListener { }
+                    .addOnFailureListener {
+                        Toast.makeText(this@RegisterActivity, getString(R.string.enter_a_valid_email_address), Toast.LENGTH_LONG).show()
+                    }
         }
 
     }
 
     private fun saveUserInFirebase(url: String) {
         val uid = FirebaseAuth.getInstance().uid
-        val nomeDoUsuario = activityRegisterBinding.name.text.toString()
-        val usuario = User(uid, nomeDoUsuario)
+        val userName = activityRegisterBinding.name.text.toString()
+        val user = User(uid, userName)
         FirebaseFirestore.getInstance().collection(PATH_USER)
                 .document(uid!!)
-                .set(usuario)
+                .set(user)
                 .addOnSuccessListener {
                 }
                 .addOnFailureListener {
                     Toast.makeText(this@RegisterActivity, getString(R.string.register_another_email_or_go_to_the_login_screen_to_see_if_this_one_is_already_registered), Toast.LENGTH_LONG).show()
                 }
 
-        dataUser = DataUser(uid, nomeDoUsuario, url)
+        dataUser = DataUser(uid, userName, url)
         databaseReference.child(PATH_USER).child(uid.toString())
             .setValue(dataUser)
     }
