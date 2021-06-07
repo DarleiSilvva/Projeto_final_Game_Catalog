@@ -125,13 +125,13 @@ class RegisterActivity : AppCompatActivity() {
 
             val storageRef = storage.reference
 
-            val mountainsRef = storageRef.child(PATH_LINK1 + FirebaseAuth.getInstance().uid.toString() + PATH_LINK2)
-            var uploadTask = mountainsRef.putBytes(data)
+            val userImageRef = storageRef.child(PATH_LINK1 + FirebaseAuth.getInstance().uid.toString() + PATH_LINK2)
+            var uploadTask = userImageRef.putBytes(data)
             uploadTask.addOnFailureListener {
             }.addOnSuccessListener {
             }
 
-            uploadTask = mountainsRef.putFile(uri)
+            uploadTask = userImageRef.putFile(uri)
 
             val urlTask = uploadTask.continueWithTask { task ->
                 if (!task.isSuccessful) {
@@ -139,7 +139,7 @@ class RegisterActivity : AppCompatActivity() {
                         throw it
                     }
                 }
-                mountainsRef.downloadUrl
+                userImageRef.downloadUrl
             }.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val downloadUri = task.result

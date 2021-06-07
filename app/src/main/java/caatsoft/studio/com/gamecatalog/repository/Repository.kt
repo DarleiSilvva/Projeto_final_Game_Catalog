@@ -6,7 +6,7 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 import retrofit2.Response
 
-class Repository (): KoinComponent {
+class Repository: KoinComponent {
     val gameAPIInterface: GameAPIInterface by inject()
 
     suspend fun getFilteredGames(

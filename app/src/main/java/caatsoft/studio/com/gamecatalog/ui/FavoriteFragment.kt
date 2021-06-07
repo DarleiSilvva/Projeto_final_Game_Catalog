@@ -18,13 +18,14 @@ import caatsoft.studio.com.gamecatalog.repository.FavoriteRepositoryImpl
 import caatsoft.studio.com.gamecatalog.viewmodel.FavoriteViewModel
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class FavoriteFragment : Fragment(), FavoriteGameAdapter.GameClickListener {
+class FavoriteFragment : Fragment(), FavoriteGameAdapter.GameClickListener, KoinComponent {
 
     private val favoriteViewModel: FavoriteViewModel by viewModels()
     private var _binding: FragmentFavoriteBinding? = null
     private lateinit var favoriteGameAdapter: FavoriteGameAdapter
-    private val repository by lazy { GameCatalog.repository }
 
     private val binding get() = _binding!!
 
@@ -89,7 +90,7 @@ class FavoriteFragment : Fragment(), FavoriteGameAdapter.GameClickListener {
                     platforms = favoriteGame.platforms,
                     image = favoriteGame.image)
 
-                repository.removeGame(favoriteGame)
+                favoriteViewModel.removeGame(favoriteGame)
                 bottomModelBinding.favoriteImageView.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 Toast.makeText(context, context?.resources?.getString(R.string.it_is_not_among_the_favourites), Toast.LENGTH_LONG).show()
                 favoriteViewModel.getGames()

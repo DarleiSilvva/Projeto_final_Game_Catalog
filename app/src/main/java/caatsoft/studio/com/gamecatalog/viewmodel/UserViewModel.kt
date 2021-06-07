@@ -4,8 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import caatsoft.studio.com.gamecatalog.network.model.Game
-import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.coroutines.launch
@@ -25,7 +23,7 @@ class UserViewModel : ViewModel() {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         for (data in dataSnapshot.children) {
                             if (data.child(PATH_ID).value.toString() == FirebaseAuth.getInstance().uid.toString()) {
-                                userNameLiveData.value = data.child(PATH_USE_NAME).value.toString()
+                                userNameLiveData.value = data.child(PATH_USER_NAME).value.toString()
                                 urlImageLiveData.value = data.child(PATH_URL_IMAGE).value.toString()
                             }
                         }
@@ -38,7 +36,7 @@ class UserViewModel : ViewModel() {
         }
     }
     companion object {
-        private const val PATH_USE_NAME = "userName"
+        private const val PATH_USER_NAME = "userName"
         private const val PATH_URL_IMAGE = "urlImage"
         private const val PATH_ID = "id"
         private const val PATH_USER = "User"
