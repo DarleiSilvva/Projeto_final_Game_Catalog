@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.GridLayoutManager
 import caatsoft.studio.com.gamecatalog.R
@@ -17,10 +16,11 @@ import caatsoft.studio.com.gamecatalog.databinding.FragmentUserBinding
 import caatsoft.studio.com.gamecatalog.viewmodel.UserViewModel
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UserFragment : Fragment() {
 
-    private val userViewModel: UserViewModel by viewModels()
+    private val userViewModel: UserViewModel by viewModel()
     private var _binding: FragmentUserBinding? = null
 
     private val binding get() = _binding!!

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import caatsoft.studio.com.gamecatalog.GameCatalog
 import caatsoft.studio.com.gamecatalog.R
@@ -30,7 +29,7 @@ class GamesFragment : Fragment(), GameAdapter.GameClickListener, KoinComponent {
     private var _binding: FragmentGamesBinding? = null
     private val gamesViewModel: GamesViewModel by viewModel()
     private lateinit var gameAdapter: GameAdapter
-    private val favoriteViewModel: FavoriteViewModel by viewModels()
+    private val favoriteViewModel: FavoriteViewModel by viewModel()
 
     private val binding get() = _binding!!
 

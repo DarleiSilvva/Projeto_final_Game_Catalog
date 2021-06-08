@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 import java.io.IOException
+import java.lang.Exception
 import java.util.*
 
 
@@ -117,7 +118,7 @@ class RegisterActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
             val baos = ByteArrayOutputStream()
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 20, baos)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, QUALITY, baos)
             val data = baos.toByteArray()
 
             val storage = FirebaseStorage.getInstance()
@@ -126,25 +127,27 @@ class RegisterActivity : AppCompatActivity() {
 
             val userImageRef = storageRef.child(PATH_LINK1 + FirebaseAuth.getInstance().uid.toString() + PATH_LINK2)
             var uploadTask = userImageRef.putBytes(data)
-            uploadTask.addOnFailureListener {
-            }.addOnSuccessListener {
-            }
 
             uploadTask = userImageRef.putFile(uri)
 
-            val urlTask = uploadTask.continueWithTask { task ->
-                if (!task.isSuccessful) {
-                    task.exception?.let {
-                        throw it
+            try {
+                val urlTask = uploadTask.continueWithTask { task ->
+                    if (!task.isSuccessful) {
+                        task.exception?.let {
+                            throw it
+                        }
+                    }
+                    userImageRef.downloadUrl
+                }.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val downloadUri = task.result
+                        createUser(downloadUri.toString())
                     }
                 }
-                userImageRef.downloadUrl
-            }.addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val downloadUri = task.result
-                    createUser(downloadUri.toString())
-                }
+            } catch (e: Exception){
+                Toast.makeText(baseContext, getString(R.string.erro), Toast.LENGTH_LONG).show()
             }
+
         }
     }
 
@@ -164,16 +167,14 @@ class RegisterActivity : AppCompatActivity() {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA)
-        if (ContextCompat.checkSelfPermission(this.applicationContext,
-                permissions[0]) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this.applicationContext,
-                permissions[1]) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this.applicationContext,
-                permissions[2]) == PackageManager.PERMISSION_GRANTED) {
-            verifyPermission = true
-        } else {
-            ActivityCompat.requestPermissions(this@RegisterActivity,
-                permissions,
-                REQUEST_CODE)
-
+        permissions.forEach { permission->
+            if (ContextCompat.checkSelfPermission(this.applicationContext,
+                    permission) == PackageManager.PERMISSION_GRANTED){
+                verifyPermission = true
+            } else {
+                ActivityCompat.requestPermissions(this@RegisterActivity,
+                    permissions, REQUEST_CODE)
+            }
         }
     }
 
@@ -184,6 +185,7 @@ class RegisterActivity : AppCompatActivity() {
 
     companion object {
         private const val REQUEST_CODE = 1
+        private const val QUALITY = 20
         private const val PATH_LINK1 = "User/profile_"
         private const val PATH_LINK2 = ".jpg"
         private const val PATH_USER = "User"

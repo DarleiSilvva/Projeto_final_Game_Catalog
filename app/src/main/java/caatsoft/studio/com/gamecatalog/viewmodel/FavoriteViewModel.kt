@@ -1,5 +1,6 @@
 package caatsoft.studio.com.gamecatalog.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,8 +11,7 @@ import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class FavoriteViewModel: ViewModel(), KoinComponent {
-    val repository:FavoriteRepositoryImpl by inject()
+class FavoriteViewModel (val repository:FavoriteRepositoryImpl): ViewModel() {
 
     private val gameListLiveData = MutableLiveData<List<FavoriteGame>>()
     val games  = gameListLiveData as LiveData<List<FavoriteGame>>
@@ -23,10 +23,19 @@ class FavoriteViewModel: ViewModel(), KoinComponent {
     }
 
     fun addGame(favoriteGame: FavoriteGame) {
-        repository.addGame(favoriteGame)
+        viewModelScope.launch {
+            repository.addGame(favoriteGame)
+        }
+
     }
 
     fun removeGame(favoriteGame: FavoriteGame){
-        repository.removeGame(favoriteGame)
+        viewModelScope.launch {
+            repository.removeGame(favoriteGame)
+
+            val gameList = gameListLiveData.value as MutableList<FavoriteGame>
+            gameList.remove(favoriteGame)
+            gameListLiveData.value = gameList
+        }
     }
 }

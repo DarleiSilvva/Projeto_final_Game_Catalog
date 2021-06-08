@@ -73,15 +73,14 @@ class LoginActivity : AppCompatActivity() {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA)
-        if (ContextCompat.checkSelfPermission(this.applicationContext,
-                permissions[0]) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this.applicationContext,
-                permissions[1]) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this.applicationContext,
-                permissions[2]) == PackageManager.PERMISSION_GRANTED) {
-        } else {
-            ActivityCompat.requestPermissions(this@LoginActivity,
-                permissions,
-                REQUEST_CODE)
-
+        permissions.forEach { permission->
+            if (ContextCompat.checkSelfPermission(this.applicationContext,
+                    permission) == PackageManager.PERMISSION_GRANTED){
+            } else {
+                ActivityCompat.requestPermissions(this@LoginActivity,
+                    permissions, REQUEST_CODE
+                )
+            }
         }
     }
 

@@ -9,6 +9,7 @@ import caatsoft.studio.com.gamecatalog.repository.Repository
 import kotlinx.coroutines.launch
 
 class GamesViewModel (private val repository: Repository) : ViewModel() {
+
   private val gameListLiveData = MutableLiveData<List<Game>>()
   val games  = gameListLiveData as LiveData<List<Game>>
 

@@ -27,4 +27,5 @@
     <string name="don_t_have_an_account_create_here">Não tem uma conta? Crie aqui!</string>
     <string name="user_name">Nome do usuário</string>
     <string name="logout">Sair da conta</string>
+    <string name="erro">erro</string>
 </resources>

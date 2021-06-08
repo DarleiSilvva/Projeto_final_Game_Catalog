@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import caatsoft.studio.com.gamecatalog.GameCatalog
 import caatsoft.studio.com.gamecatalog.R
@@ -18,12 +17,13 @@ import caatsoft.studio.com.gamecatalog.repository.FavoriteRepositoryImpl
 import caatsoft.studio.com.gamecatalog.viewmodel.FavoriteViewModel
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
 class FavoriteFragment : Fragment(), FavoriteGameAdapter.GameClickListener, KoinComponent {
 
-    private val favoriteViewModel: FavoriteViewModel by viewModels()
+    private val favoriteViewModel: FavoriteViewModel by viewModel()
     private var _binding: FragmentFavoriteBinding? = null
     private lateinit var favoriteGameAdapter: FavoriteGameAdapter
 
@@ -83,17 +83,9 @@ class FavoriteFragment : Fragment(), FavoriteGameAdapter.GameClickListener, Koin
             if (!favoriteGame.name.isNullOrBlank() && !favoriteGame.deck.isNullOrBlank()
                 && !favoriteGame.original_release_date.isNullOrBlank() && !favoriteGame.platforms.isNullOrBlank()
                 && !favoriteGame.image.isNullOrBlank()) {
-                val favoriteGame = FavoriteGame(
-                    name = favoriteGame.name,
-                    deck = favoriteGame.deck,
-                    original_release_date = favoriteGame.original_release_date,
-                    platforms = favoriteGame.platforms,
-                    image = favoriteGame.image)
-
                 favoriteViewModel.removeGame(favoriteGame)
                 bottomModelBinding.favoriteImageView.setImageResource(R.drawable.ic_baseline_favorite_border_24)
                 Toast.makeText(context, context?.resources?.getString(R.string.it_is_not_among_the_favourites), Toast.LENGTH_LONG).show()
-                favoriteViewModel.getGames()
             }
         }
         dialog.show ()
