@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/idModelConstraint"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -11,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_ui_card"
+        android:background="@drawable/background_ui_card_white"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +24,7 @@
         <ImageView
             android:id="@+id/iconGameImage"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="220dp"
             android:paddingBottom="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,20 +52,8 @@
                 android:paddingEnd="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textSize="23sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/deckText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:fontFamily="@font/bangers"
-                android:hint="deck"
-                android:paddingStart="10dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/originalReleaseDateText"

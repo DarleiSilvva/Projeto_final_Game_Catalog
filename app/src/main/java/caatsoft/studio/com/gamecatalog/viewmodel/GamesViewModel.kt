@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import caatsoft.studio.com.gamecatalog.network.Game
-import caatsoft.studio.com.gamecatalog.network.Repository
+import caatsoft.studio.com.gamecatalog.network.model.Game
+import caatsoft.studio.com.gamecatalog.repository.Repository
 import kotlinx.coroutines.launch
-import org.koin.core.KoinComponent
 
 class GamesViewModel (private val repository: Repository) : ViewModel() {
+
   private val gameListLiveData = MutableLiveData<List<Game>>()
   val games  = gameListLiveData as LiveData<List<Game>>
 

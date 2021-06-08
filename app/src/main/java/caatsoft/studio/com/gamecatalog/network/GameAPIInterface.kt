@@ -1,5 +1,6 @@
 package caatsoft.studio.com.gamecatalog.network
 
+import caatsoft.studio.com.gamecatalog.network.model.GameResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

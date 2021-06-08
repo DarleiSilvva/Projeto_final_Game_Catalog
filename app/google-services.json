@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1030558728533",
+    "project_id": "gamecatalog-b594c",
+    "storage_bucket": "gamecatalog-b594c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030558728533:android:4997af8b1a31b5b326afdc",
+        "android_client_info": {
+          "package_name": "caatsoft.studio.com.gamecatalog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030558728533-v7ua04n6gupvm1mpo9m6lf6uvktskjqp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "caatsoft.studio.com.gamecatalog",
+            "certificate_hash": "795350539a099e374459e7ff7aadb1efb4f7a3cf"
+          }
+        },
+        {
+          "client_id": "1030558728533-9hobt5c884kh31vrbbjt8kdsfevnrh0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMfH1OFNHJC52O18sNdkLcUiKj2TJf0Rc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030558728533-9hobt5c884kh31vrbbjt8kdsfevnrh0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

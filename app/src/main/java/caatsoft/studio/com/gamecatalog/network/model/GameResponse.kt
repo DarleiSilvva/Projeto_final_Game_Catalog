@@ -1,4 +1,4 @@
-package caatsoft.studio.com.gamecatalog.network
+package caatsoft.studio.com.gamecatalog.network.model
 
 import com.google.gson.annotations.SerializedName
 
