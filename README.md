@@ -3,6 +3,12 @@ O Game Catalog é o projeto final da primeira etapa do estágio de Darlei Silva.
 
 ## Descrição 🎮📒
 Basicamente, ele é um catálogo de games que contém 4 partes: a autenticação inicial, a parte de exibição dos jogos, os favoritos e a parte com dados do usuário. As três últimas estão em uma única activity, mas cada um é um __fragment__ que é alterado por um bottom navegation. 
+![login_br](https://user-images.githubusercontent.com/66731191/121407773-0c7f0500-c936-11eb-9ccc-eb1129744634.png)
+![cadastro](https://user-images.githubusercontent.com/66731191/121407694-f7a27180-c935-11eb-8dd6-f912b5f24d5e.png)
+![favoritos](https://user-images.githubusercontent.com/66731191/121407726-ff621600-c935-11eb-88f4-f45e9af968bf.png)
+![games](https://user-images.githubusercontent.com/66731191/121407758-0852e780-c936-11eb-9fdb-0c7030718d8d.png)
+![usuario](https://user-images.githubusercontent.com/66731191/121407788-10ab2280-c936-11eb-978b-a15a2bcdd416.png)
+
 
 ### Tecnologias 🧩🖱️💾
 * Kotlin
