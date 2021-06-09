@@ -13,7 +13,7 @@ Basicamente, ele é um catálogo de games que contém 4 partes: a autenticação
   * Storage
   * Auth
   * Analytics
-  * firestore
+  * Firestore
 * Retrofit
   * gson
   * okhttp3
