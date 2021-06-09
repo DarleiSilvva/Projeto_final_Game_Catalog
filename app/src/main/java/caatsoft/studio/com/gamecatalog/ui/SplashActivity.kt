@@ -1,10 +1,11 @@
-package caatsoft.studio.com.gamecatalog
+package caatsoft.studio.com.gamecatalog.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import caatsoft.studio.com.gamecatalog.R
 
 class SplashActivity : AppCompatActivity() {
 

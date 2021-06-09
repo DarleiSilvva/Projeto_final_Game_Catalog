@@ -1,5 +1,6 @@
 package caatsoft.studio.com.gamecatalog.ui
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,7 @@ class FavoriteFragment : Fragment(), FavoriteGameAdapter.GameClickListener, Koin
     private val favoriteViewModel: FavoriteViewModel by viewModel()
     private var _binding: FragmentFavoriteBinding? = null
     private lateinit var favoriteGameAdapter: FavoriteGameAdapter
+    private var alertDialog: AlertDialog? = null
 
     private val binding get() = _binding!!
 
@@ -36,6 +38,17 @@ class FavoriteFragment : Fragment(), FavoriteGameAdapter.GameClickListener, Koin
     ): View {
 
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
+
+        favoriteViewModel.isLoading.observe(viewLifecycleOwner,
+            { isLoading ->
+                if (isLoading != null) {
+                    if (isLoading) {
+                        startLoading()
+                    } else{
+                        dismissDialog()
+                    }
+                }
+            })
 
         favoriteViewModel.games.observe(viewLifecycleOwner, { gamesList ->
             val mLayoutManager = GridLayoutManager( this.context, 2)
@@ -89,5 +102,18 @@ class FavoriteFragment : Fragment(), FavoriteGameAdapter.GameClickListener, Koin
             }
         }
         dialog.show ()
+    }
+
+    fun startLoading() {
+        val builder = AlertDialog.Builder(this.context)
+        val inflater = requireActivity().layoutInflater
+        builder.setView(inflater.inflate(R.layout.popup_loading, null))
+        builder.setCancelable(true)
+        alertDialog = builder.create()
+        alertDialog?.show()
+    }
+
+    fun dismissDialog() {
+        alertDialog?.dismiss()
     }
 }

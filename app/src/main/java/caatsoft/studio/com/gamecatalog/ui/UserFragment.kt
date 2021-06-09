@@ -1,5 +1,6 @@
 package caatsoft.studio.com.gamecatalog.ui
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,6 +23,7 @@ class UserFragment : Fragment() {
 
     private val userViewModel: UserViewModel by viewModel()
     private var _binding: FragmentUserBinding? = null
+    private lateinit var alertDialog: AlertDialog
 
     private val binding get() = _binding!!
     private lateinit var mAuth: FirebaseAuth
@@ -35,6 +37,17 @@ class UserFragment : Fragment() {
 
 
         _binding = FragmentUserBinding.inflate(inflater, container, false)
+
+        userViewModel.isLoading.observe(viewLifecycleOwner,
+            { isLoading ->
+                if (isLoading != null) {
+                    if (isLoading) {
+                        startLoading()
+                    } else{
+                        dismissDialog()
+                    }
+                }
+            })
 
         userViewModel.userName.observe(viewLifecycleOwner, { name->
             _binding?.nameTextview?.text = name
@@ -61,6 +74,19 @@ class UserFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun startLoading() {
+        val builder = AlertDialog.Builder(this.context)
+        val inflater = requireActivity().layoutInflater
+        builder.setView(inflater.inflate(R.layout.popup_loading, null))
+        builder.setCancelable(true)
+        alertDialog = builder.create()
+        alertDialog.show()
+    }
+
+    fun dismissDialog() {
+        alertDialog.dismiss()
     }
 
 }

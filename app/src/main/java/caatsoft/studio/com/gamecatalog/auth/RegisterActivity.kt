@@ -1,20 +1,19 @@
 package caatsoft.studio.com.gamecatalog.auth
 
 import android.Manifest
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.*
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import caatsoft.studio.com.gamecatalog.MainActivity
+import caatsoft.studio.com.gamecatalog.ui.MainActivity
 import caatsoft.studio.com.gamecatalog.R
 import caatsoft.studio.com.gamecatalog.databinding.ActivityRegisterBinding
 import caatsoft.studio.com.gamecatalog.network.model.DataUser
@@ -34,9 +33,10 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var firebaseDatabase: FirebaseDatabase
     private lateinit var databaseReference: DatabaseReference
     private lateinit var dataUser: DataUser
-    private lateinit var resultUri: Uri
+    private var resultUri: Uri? = null
     private lateinit var activityRegisterBinding: ActivityRegisterBinding
     var verifyPermission = false
+    private lateinit var alertDialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +48,7 @@ class RegisterActivity : AppCompatActivity() {
 
         applyVerifyPermissions()
         activityRegisterBinding.register.setOnClickListener(View.OnClickListener {
+            startLoading()
             saveImage()
         })
         activityRegisterBinding.profileImageView.setOnClickListener(View.OnClickListener {
@@ -71,6 +72,7 @@ class RegisterActivity : AppCompatActivity() {
         if (name == null || name.isEmpty() || email == null
                 || email.isEmpty() || password == null || password.isEmpty()|| photourl == null || photourl.isEmpty()) {
             Toast.makeText(this, getString(R.string.all_must_be_filled_in), Toast.LENGTH_SHORT).show()
+            dismissDialog()
         } else{
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
@@ -79,6 +81,8 @@ class RegisterActivity : AppCompatActivity() {
                             val intent = Intent(this@RegisterActivity, MainActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                             startActivity(intent)
+                            dismissDialog()
+                            finish()
                         } else {
                             Toast.makeText(this@RegisterActivity, getString(R.string.enter_a_valid_email_address), Toast.LENGTH_LONG).show()
                         }
@@ -110,10 +114,10 @@ class RegisterActivity : AppCompatActivity() {
 
 
     private fun saveImage() {
-        resultUri.let { uri ->
+        if (resultUri != null){
             lateinit var bitmap: Bitmap
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(application.contentResolver, uri)
+                bitmap = MediaStore.Images.Media.getBitmap(application.contentResolver, resultUri)
             } catch (e: IOException) {
                 e.printStackTrace()
             }
@@ -128,7 +132,7 @@ class RegisterActivity : AppCompatActivity() {
             val userImageRef = storageRef.child(PATH_LINK1 + FirebaseAuth.getInstance().uid.toString() + PATH_LINK2)
             var uploadTask = userImageRef.putBytes(data)
 
-            uploadTask = userImageRef.putFile(uri)
+            uploadTask = userImageRef.putFile(resultUri!!)
 
             try {
                 val urlTask = uploadTask.continueWithTask { task ->
@@ -147,7 +151,9 @@ class RegisterActivity : AppCompatActivity() {
             } catch (e: Exception){
                 Toast.makeText(baseContext, getString(R.string.erro), Toast.LENGTH_LONG).show()
             }
-
+        } else{
+            dismissDialog()
+            Toast.makeText(this, getString(R.string.all_must_be_filled_in), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -190,5 +196,18 @@ class RegisterActivity : AppCompatActivity() {
         private const val PATH_LINK2 = ".jpg"
         private const val PATH_USER = "User"
         private const val TYPE_DATA = "image/*"
+    }
+
+    fun startLoading() {
+        val builder = AlertDialog.Builder(this)
+        val inflater = this.layoutInflater
+        builder.setView(inflater.inflate(R.layout.popup_loading, null))
+        builder.setCancelable(true)
+        alertDialog = builder.create()
+        alertDialog.show()
+    }
+
+    fun dismissDialog() {
+        alertDialog.dismiss()
     }
 }

@@ -1,15 +1,13 @@
-package caatsoft.studio.com.gamecatalog
+package caatsoft.studio.com.gamecatalog.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import caatsoft.studio.com.gamecatalog.R
 import caatsoft.studio.com.gamecatalog.auth.LoginActivity
 import caatsoft.studio.com.gamecatalog.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView

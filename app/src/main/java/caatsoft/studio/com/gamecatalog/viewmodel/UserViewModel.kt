@@ -16,7 +16,11 @@ class UserViewModel : ViewModel() {
     private val urlImageLiveData = MutableLiveData<String>()
     val urlImage  = urlImageLiveData as LiveData<String>
 
+    private val _isLoading = MutableLiveData(true)
+    val isLoading: LiveData<Boolean> = _isLoading
+
     fun getDataUser() {
+        _isLoading.value = true
         viewModelScope.launch {
             FirebaseDatabase.getInstance().reference.child(PATH_USER)
                 .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -25,6 +29,7 @@ class UserViewModel : ViewModel() {
                             if (data.child(PATH_ID).value.toString() == FirebaseAuth.getInstance().uid.toString()) {
                                 userNameLiveData.value = data.child(PATH_USER_NAME).value.toString()
                                 urlImageLiveData.value = data.child(PATH_URL_IMAGE).value.toString()
+                                _isLoading.value = false
                             }
                         }
                     }
