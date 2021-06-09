@@ -24,7 +24,7 @@ Basicamente, ele é um catálogo de games que contém 4 partes: a autenticação
 * viewmodel
 
 ## Para começar: 👨🏻‍💻🖥
-## Instalação 👨🏻‍💻🖥️
+### Instalação 👨🏻‍💻🖥️
 - [x] É necessário baixar o Android Studio
 - [x] É necessário ter uma conta no Firebase
 
@@ -105,9 +105,9 @@ dependencies {
 }
 ```
 
-## Autor
+### Autor
 Darlei Silva <h5>https://br.linkedin.com/in/darlei-silva-937a93168<h5>
   
-## Histórico da Versão
-## Licença
-## Agradecimentos
+### Histórico da Versão
+### Licença
+### Agradecimentos
