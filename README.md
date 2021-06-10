@@ -3,13 +3,15 @@
 </p>
 
 # <h1 align="center">__Game_Catalog__ 🎮🧩⚽🕹️🀄♟️</h1>
-<p align="center"> O Game Catalog é o projeto final da primeira etapa do estágio de Darlei Silva.</p>
+<p align="center"> The Game Catalog is the final project of the first stage of Darlei Silva's internship.</p>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/DarleiSilvva/Projeto_final_Game_Catalog/blob/master/LICENSE)
 
 
-## Descrição 🎮📒
-O Game_Catalog é um catálogo de games que contém 4 partes: a autenticação inicial, a parte de exibição dos jogos, os favoritos e a parte com dados do usuário. As três últimas estão em uma única activity, mas cada um é uma __fragment__ que é alterado por um bottom navegation. 
+## Description 🎮📒
+Game_Catalog, as the name implies, is a game catalog that contains 4 parts: the initial authentication, the game display part, the favorites and the part with user data. The last three are in a single activity, but each one is a __fragment__ that is changed by a bottom navigation.
+
+_The screens are in Portuguese, but the project language is in English and it is translated to both languages._
 
 <p align="center"> Login </p>
 <p align="center">
@@ -17,31 +19,31 @@ O Game_Catalog é um catálogo de games que contém 4 partes: a autenticação i
 </p>
 
 
-<p align="center"> Registro </p>
+<p align="center"> Register </p>
 <p align="center">
   <img width="350" height="571" src="https://user-images.githubusercontent.com/66731191/121407694-f7a27180-c935-11eb-8dd6-f912b5f24d5e.png"> 
 </p>
 
 
-<p align="center"> Jogos </p>
+<p align="center"> Games </p>
 <p align="center">
   <img width="350" height="571" src="https://user-images.githubusercontent.com/66731191/121407758-0852e780-c936-11eb-9fdb-0c7030718d8d.png"> 
 </p>
 
 
-<p align="center"> Favoritos </p>
+<p align="center"> Favorites </p>
 <p align="center">
   <img width="350" height="571" src="https://user-images.githubusercontent.com/66731191/121407726-ff621600-c935-11eb-88f4-f45e9af968bf.png"> 
 </p>
 
 
-<p align="center"> Dados do usuário </p>
+<p align="center"> User data </p>
 <p align="center">
   <img width="350" height="571" src="https://user-images.githubusercontent.com/66731191/121407788-10ab2280-c936-11eb-978b-a15a2bcdd416.png"> 
 </p>
 
 
-## Tecnologias 🧩🖱️💾
+## Technologies 🧩🖱️💾
 * Kotlin
 * Android Studio
 * Firebase
@@ -60,16 +62,16 @@ O Game_Catalog é um catálogo de games que contém 4 partes: a autenticação i
 * Coroutines
 * Viewmodel
 
-## Arquitetura 🏛️🧩
+## Architecture 🏛️🧩
 MVVM
 
-## Para começar: 👨🏻‍💻🖥
+## To starting: 👨🏻‍💻🖥
 ### Instalação 👨🏻‍💻🖥️
 - [x] É necessário baixar o Android Studio
 - [x] É necessário ter uma conta no Firebase
 - [x] É necessário ter acesso a API de games: https://www.giantbomb.com/
 
-### Dependências 🧩📄
+### Dependencies 🧩📄
 
 ```gradle
 ext {
@@ -146,11 +148,11 @@ dependencies {
 }
 ```
 
-## Autor 👨🏻‍💻🖥️
+## Author 👨🏻‍💻🖥️
 Darlei Silva <h5>https://br.linkedin.com/in/darlei-silva-937a93168<h5>
   
-## Histórico da Versão 💾
+## Version History 💾
  1.0
  
-## Agradecimentos 🤝🏼
-Lucas Souza https://github.com/Lhmsouza, o mentor, ele auxiliou desde o início na execução do projeto. E Lucas Cabral que ajudou na parte de Networking em alguns momentos.
+## Thanks 🤝🏼
+Lucas Souza (https://github.com/Lhmsouza), the mentor, he helped from the beginning in the execution of the project. And Lucas Cabral (https://github.com/LucasCabralDevv) who helped with the Networking part at times.
