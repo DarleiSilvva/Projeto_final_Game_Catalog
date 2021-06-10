@@ -41,7 +41,7 @@ Basicamente, ele é um catálogo de games que contém 4 partes: a autenticação
 </p>
 
 
-### Tecnologias 🧩🖱️💾
+## Tecnologias 🧩🖱️💾
 * Kotlin
 * Android Studio
 * Firebase
@@ -59,6 +59,9 @@ Basicamente, ele é um catálogo de games que contém 4 partes: a autenticação
 * Koin
 * Coroutines
 * Viewmodel
+
+## Arquitetura 🏛️🧩
+MVVM
 
 ## Para começar: 👨🏻‍💻🖥
 ### Instalação 👨🏻‍💻🖥️
@@ -143,11 +146,11 @@ dependencies {
 }
 ```
 
-### Autor 👨🏻‍💻🖥️
+## Autor 👨🏻‍💻🖥️
 Darlei Silva <h5>https://br.linkedin.com/in/darlei-silva-937a93168<h5>
   
-### Histórico da Versão 💾
+## Histórico da Versão 💾
  1.0
  
-### Agradecimentos 🤝🏼
+## Agradecimentos 🤝🏼
  Lucas Souza, o mentor, ele auxiliou desde o início na execução do projeto. E Lucas Cabral que ajudou na parte de Networking em alguns momentos.
