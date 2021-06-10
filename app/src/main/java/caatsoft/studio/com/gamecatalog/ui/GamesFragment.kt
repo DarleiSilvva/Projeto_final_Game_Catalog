@@ -12,8 +12,10 @@ import caatsoft.studio.com.gamecatalog.R
 import caatsoft.studio.com.gamecatalog.adapter.GameAdapter
 import caatsoft.studio.com.gamecatalog.databinding.BottomModelBinding
 import caatsoft.studio.com.gamecatalog.databinding.FragmentGamesBinding
+import caatsoft.studio.com.gamecatalog.dismissDialog
 import caatsoft.studio.com.gamecatalog.network.model.FavoriteGame
 import caatsoft.studio.com.gamecatalog.network.model.Game
+import caatsoft.studio.com.gamecatalog.startLoading
 import caatsoft.studio.com.gamecatalog.viewmodel.GamesViewModel
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -26,7 +28,7 @@ class GamesFragment : Fragment(), GameAdapter.GameClickListener, KoinComponent {
     private var _binding: FragmentGamesBinding? = null
     private val gamesViewModel: GamesViewModel by viewModel()
     private lateinit var gameAdapter: GameAdapter
-    private lateinit var alertDialog: AlertDialog
+    private var alertDialog: AlertDialog? = null
 
     private val binding get() = _binding!!
 
@@ -41,9 +43,9 @@ class GamesFragment : Fragment(), GameAdapter.GameClickListener, KoinComponent {
             { isLoading ->
                 if (isLoading != null) {
                     if (isLoading) {
-                        startLoading()
+                        alertDialog = startLoading()
                     } else{
-                        dismissDialog()
+                        dismissDialog(alertDialog)
                     }
                 }
             })
@@ -110,7 +112,7 @@ class GamesFragment : Fragment(), GameAdapter.GameClickListener, KoinComponent {
         dialog.show ()
     }
 
-    fun startLoading() {
+    /*fun startLoading() {
         val builder = AlertDialog.Builder(this.context)
         val inflater = requireActivity().layoutInflater
         builder.setView(inflater.inflate(R.layout.popup_loading, null))
@@ -121,5 +123,5 @@ class GamesFragment : Fragment(), GameAdapter.GameClickListener, KoinComponent {
 
     fun dismissDialog() {
         alertDialog.dismiss()
-    }
+    }*/
 }

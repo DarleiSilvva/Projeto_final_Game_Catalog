@@ -14,6 +14,8 @@ import caatsoft.studio.com.gamecatalog.R
 import caatsoft.studio.com.gamecatalog.adapter.GameAdapter
 import caatsoft.studio.com.gamecatalog.auth.LoginActivity
 import caatsoft.studio.com.gamecatalog.databinding.FragmentUserBinding
+import caatsoft.studio.com.gamecatalog.dismissDialog
+import caatsoft.studio.com.gamecatalog.startLoading
 import caatsoft.studio.com.gamecatalog.viewmodel.UserViewModel
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -42,9 +44,9 @@ class UserFragment : Fragment() {
             { isLoading ->
                 if (isLoading != null) {
                     if (isLoading) {
-                        startLoading()
+                        alertDialog = startLoading()
                     } else{
-                        dismissDialog()
+                        dismissDialog(alertDialog)
                     }
                 }
             })
@@ -74,19 +76,6 @@ class UserFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    fun startLoading() {
-        val builder = AlertDialog.Builder(this.context)
-        val inflater = requireActivity().layoutInflater
-        builder.setView(inflater.inflate(R.layout.popup_loading, null))
-        builder.setCancelable(true)
-        alertDialog = builder.create()
-        alertDialog.show()
-    }
-
-    fun dismissDialog() {
-        alertDialog.dismiss()
     }
 
 }

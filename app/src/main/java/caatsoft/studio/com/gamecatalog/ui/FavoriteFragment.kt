@@ -13,8 +13,10 @@ import caatsoft.studio.com.gamecatalog.R
 import caatsoft.studio.com.gamecatalog.adapter.FavoriteGameAdapter
 import caatsoft.studio.com.gamecatalog.databinding.BottomModelBinding
 import caatsoft.studio.com.gamecatalog.databinding.FragmentFavoriteBinding
+import caatsoft.studio.com.gamecatalog.dismissDialog
 import caatsoft.studio.com.gamecatalog.network.model.FavoriteGame
 import caatsoft.studio.com.gamecatalog.repository.FavoriteRepositoryImpl
+import caatsoft.studio.com.gamecatalog.startLoading
 import caatsoft.studio.com.gamecatalog.viewmodel.FavoriteViewModel
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -45,7 +47,7 @@ class FavoriteFragment : Fragment(), FavoriteGameAdapter.GameClickListener, Koin
                     if (isLoading) {
                         startLoading()
                     } else{
-                        dismissDialog()
+                        dismissDialog(alertDialog)
                     }
                 }
             })
@@ -102,18 +104,5 @@ class FavoriteFragment : Fragment(), FavoriteGameAdapter.GameClickListener, Koin
             }
         }
         dialog.show ()
-    }
-
-    fun startLoading() {
-        val builder = AlertDialog.Builder(this.context)
-        val inflater = requireActivity().layoutInflater
-        builder.setView(inflater.inflate(R.layout.popup_loading, null))
-        builder.setCancelable(true)
-        alertDialog = builder.create()
-        alertDialog?.show()
-    }
-
-    fun dismissDialog() {
-        alertDialog?.dismiss()
     }
 }

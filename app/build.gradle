@@ -63,7 +63,7 @@ ext {
     espresso_cor_version = "3.3.0"
     firebase_core_version = "19.0.0"
     firebase_database_version = "20.0.0"
-    firebase_ui_databas_version = "4.3.2"
+    firebase_ui_database_version = "4.3.2"
 }
 
 
@@ -109,7 +109,7 @@ dependencies {
     implementation "com.google.firebase:firebase-core:$firebase_core_version"
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation "com.google.firebase:firebase-database:$firebase_database_version"
-    implementation "com.firebaseui:firebase-ui-database:$firebase_ui_databas_version"
+    implementation "com.firebaseui:firebase-ui-database:$firebase_ui_database_version"
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
 
