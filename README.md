@@ -9,7 +9,7 @@
 
 
 ## Descrição 🎮📒
-Basicamente, ele é um catálogo de games que contém 4 partes: a autenticação inicial, a parte de exibição dos jogos, os favoritos e a parte com dados do usuário. As três últimas estão em uma única activity, mas cada um é um __fragment__ que é alterado por um bottom navegation. 
+O Game_Catalog é um catálogo de games que contém 4 partes: a autenticação inicial, a parte de exibição dos jogos, os favoritos e a parte com dados do usuário. As três últimas estão em uma única activity, mas cada um é uma __fragment__ que é alterado por um bottom navegation. 
 
 <p align="center"> Login </p>
 <p align="center">
@@ -153,4 +153,4 @@ Darlei Silva <h5>https://br.linkedin.com/in/darlei-silva-937a93168<h5>
  1.0
  
 ## Agradecimentos 🤝🏼
- Lucas Souza, o mentor, ele auxiliou desde o início na execução do projeto. E Lucas Cabral que ajudou na parte de Networking em alguns momentos.
+Lucas Souza https://github.com/Lhmsouza, o mentor, ele auxiliou desde o início na execução do projeto. E Lucas Cabral que ajudou na parte de Networking em alguns momentos.
