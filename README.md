@@ -1,22 +1,44 @@
-# __Game_Catalog__ 🎮🧩⚽🕹️🀄♟️
-O Game Catalog é o projeto final da primeira etapa do estágio de Darlei Silva.
+<p align="center">
+  <img width="150" height="150" src="https://user-images.githubusercontent.com/66731191/121453157-0d845680-c977-11eb-82d5-c0139f9f1c84.png">
+</p>
+
+# <h1 align="center">__Game_Catalog__ 🎮🧩⚽🕹️🀄♟️</h1>
+<p align="center"> O Game Catalog é o projeto final da primeira etapa do estágio de Darlei Silva.</p>
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/DarleiSilvva/Projeto_final_Game_Catalog/blob/master/LICENSE)
+
 
 ## Descrição 🎮📒
 Basicamente, ele é um catálogo de games que contém 4 partes: a autenticação inicial, a parte de exibição dos jogos, os favoritos e a parte com dados do usuário. As três últimas estão em uma única activity, mas cada um é um __fragment__ que é alterado por um bottom navegation. 
-* Login
-![login_br](https://user-images.githubusercontent.com/66731191/121407773-0c7f0500-c936-11eb-9ccc-eb1129744634.png)
 
-* Registro
-![cadastro](https://user-images.githubusercontent.com/66731191/121407694-f7a27180-c935-11eb-8dd6-f912b5f24d5e.png)
+<p align="center"> Login </p>
+<p align="center">
+  <img width="350" height="571" src="https://user-images.githubusercontent.com/66731191/121407773-0c7f0500-c936-11eb-9ccc-eb1129744634.png"> 
+</p>
 
-* Jogos
-![games](https://user-images.githubusercontent.com/66731191/121407758-0852e780-c936-11eb-9fdb-0c7030718d8d.png)
 
-* Favoritos
-![favoritos](https://user-images.githubusercontent.com/66731191/121407726-ff621600-c935-11eb-88f4-f45e9af968bf.png)
+<p align="center"> Registro </p>
+<p align="center">
+  <img width="350" height="571" src="https://user-images.githubusercontent.com/66731191/121407694-f7a27180-c935-11eb-8dd6-f912b5f24d5e.png"> 
+</p>
 
-* Dados do usuário
-![usuario](https://user-images.githubusercontent.com/66731191/121407788-10ab2280-c936-11eb-978b-a15a2bcdd416.png)
+
+<p align="center"> Jogos </p>
+<p align="center">
+  <img width="350" height="571" src="https://user-images.githubusercontent.com/66731191/121407758-0852e780-c936-11eb-9fdb-0c7030718d8d.png"> 
+</p>
+
+
+<p align="center"> Favoritos </p>
+<p align="center">
+  <img width="350" height="571" src="https://user-images.githubusercontent.com/66731191/121407726-ff621600-c935-11eb-88f4-f45e9af968bf.png"> 
+</p>
+
+
+<p align="center"> Dados do usuário </p>
+<p align="center">
+  <img width="350" height="571" src="https://user-images.githubusercontent.com/66731191/121407788-10ab2280-c936-11eb-978b-a15a2bcdd416.png"> 
+</p>
 
 
 ### Tecnologias 🧩🖱️💾
@@ -36,12 +58,13 @@ Basicamente, ele é um catálogo de games que contém 4 partes: a autenticação
 * Room
 * Koin
 * Coroutines
-* viewmodel
+* Viewmodel
 
 ## Para começar: 👨🏻‍💻🖥
 ### Instalação 👨🏻‍💻🖥️
 - [x] É necessário baixar o Android Studio
 - [x] É necessário ter uma conta no Firebase
+- [x] É necessário ter acesso a API de games: https://www.giantbomb.com/
 
 ### Dependências 🧩📄
 
@@ -120,9 +143,11 @@ dependencies {
 }
 ```
 
-### Autor
+### Autor 👨🏻‍💻🖥️
 Darlei Silva <h5>https://br.linkedin.com/in/darlei-silva-937a93168<h5>
   
-### Histórico da Versão
-### Licença
-### Agradecimentos
+### Histórico da Versão 💾
+ 1.0
+ 
+### Agradecimentos 🤝🏼
+ Lucas Souza, o mentor, ele auxiliou desde o início na execução do projeto. E Lucas Cabral que ajudou na parte de Networking em alguns momentos.
