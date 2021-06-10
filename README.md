@@ -10,10 +10,10 @@ Basicamente, ele é um catálogo de games que contém 4 partes: a autenticação
 ![cadastro](https://user-images.githubusercontent.com/66731191/121407694-f7a27180-c935-11eb-8dd6-f912b5f24d5e.png)
 
 * Jogos
-![favoritos](https://user-images.githubusercontent.com/66731191/121407726-ff621600-c935-11eb-88f4-f45e9af968bf.png)
+![games](https://user-images.githubusercontent.com/66731191/121407758-0852e780-c936-11eb-9fdb-0c7030718d8d.png)
 
 * Favoritos
-![games](https://user-images.githubusercontent.com/66731191/121407758-0852e780-c936-11eb-9fdb-0c7030718d8d.png)
+![favoritos](https://user-images.githubusercontent.com/66731191/121407726-ff621600-c935-11eb-88f4-f45e9af968bf.png)
 
 * Dados do usuário
 ![usuario](https://user-images.githubusercontent.com/66731191/121407788-10ab2280-c936-11eb-978b-a15a2bcdd416.png)
