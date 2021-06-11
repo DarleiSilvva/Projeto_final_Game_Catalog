@@ -8,10 +8,10 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel {
-        GamesViewModel(repository = get())
+        GamesViewModel(repository = get(), favoriteRepository = get())
     }
     viewModel {
-        FavoriteViewModel(repository = get())
+        FavoriteViewModel(favoriteRepository = get())
     }
     viewModel {
         UserViewModel()

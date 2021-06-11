@@ -1,5 +1,6 @@
 package caatsoft.studio.com.gamecatalog.ui
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +13,10 @@ import caatsoft.studio.com.gamecatalog.R
 import caatsoft.studio.com.gamecatalog.adapter.FavoriteGameAdapter
 import caatsoft.studio.com.gamecatalog.databinding.BottomModelBinding
 import caatsoft.studio.com.gamecatalog.databinding.FragmentFavoriteBinding
+import caatsoft.studio.com.gamecatalog.dismissDialog
 import caatsoft.studio.com.gamecatalog.network.model.FavoriteGame
 import caatsoft.studio.com.gamecatalog.repository.FavoriteRepositoryImpl
+import caatsoft.studio.com.gamecatalog.startLoading
 import caatsoft.studio.com.gamecatalog.viewmodel.FavoriteViewModel
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -26,6 +29,7 @@ class FavoriteFragment : Fragment(), FavoriteGameAdapter.GameClickListener, Koin
     private val favoriteViewModel: FavoriteViewModel by viewModel()
     private var _binding: FragmentFavoriteBinding? = null
     private lateinit var favoriteGameAdapter: FavoriteGameAdapter
+    private var alertDialog: AlertDialog? = null
 
     private val binding get() = _binding!!
 
@@ -36,6 +40,17 @@ class FavoriteFragment : Fragment(), FavoriteGameAdapter.GameClickListener, Koin
     ): View {
 
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
+
+        favoriteViewModel.isLoading.observe(viewLifecycleOwner,
+            { isLoading ->
+                if (isLoading != null) {
+                    if (isLoading) {
+                        startLoading()
+                    } else{
+                        dismissDialog(alertDialog)
+                    }
+                }
+            })
 
         favoriteViewModel.games.observe(viewLifecycleOwner, { gamesList ->
             val mLayoutManager = GridLayoutManager( this.context, 2)

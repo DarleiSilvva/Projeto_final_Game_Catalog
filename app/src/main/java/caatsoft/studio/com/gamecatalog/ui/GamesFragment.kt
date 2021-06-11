@@ -1,5 +1,6 @@
 package caatsoft.studio.com.gamecatalog.ui
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,29 +8,27 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import caatsoft.studio.com.gamecatalog.GameCatalog
 import caatsoft.studio.com.gamecatalog.R
-import caatsoft.studio.com.gamecatalog.adapter.FavoriteGameAdapter
 import caatsoft.studio.com.gamecatalog.adapter.GameAdapter
 import caatsoft.studio.com.gamecatalog.databinding.BottomModelBinding
 import caatsoft.studio.com.gamecatalog.databinding.FragmentGamesBinding
-import caatsoft.studio.com.gamecatalog.network.model.Game
+import caatsoft.studio.com.gamecatalog.dismissDialog
 import caatsoft.studio.com.gamecatalog.network.model.FavoriteGame
-import caatsoft.studio.com.gamecatalog.repository.FavoriteRepositoryImpl
-import caatsoft.studio.com.gamecatalog.viewmodel.FavoriteViewModel
+import caatsoft.studio.com.gamecatalog.network.model.Game
+import caatsoft.studio.com.gamecatalog.startLoading
 import caatsoft.studio.com.gamecatalog.viewmodel.GamesViewModel
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.KoinComponent
-import org.koin.core.inject
+
 
 class GamesFragment : Fragment(), GameAdapter.GameClickListener, KoinComponent {
 
     private var _binding: FragmentGamesBinding? = null
     private val gamesViewModel: GamesViewModel by viewModel()
     private lateinit var gameAdapter: GameAdapter
-    private val favoriteViewModel: FavoriteViewModel by viewModel()
+    private var alertDialog: AlertDialog? = null
 
     private val binding get() = _binding!!
 
@@ -39,6 +38,17 @@ class GamesFragment : Fragment(), GameAdapter.GameClickListener, KoinComponent {
         savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentGamesBinding.inflate(inflater, container, false)
+
+        gamesViewModel.isLoading.observe(viewLifecycleOwner,
+            { isLoading ->
+                if (isLoading != null) {
+                    if (isLoading) {
+                        alertDialog = startLoading()
+                    } else{
+                        dismissDialog(alertDialog)
+                    }
+                }
+            })
 
         gamesViewModel.games.observe(viewLifecycleOwner, { gamesList ->
             val mLayoutManager = GridLayoutManager( this.context, 2)
@@ -92,7 +102,7 @@ class GamesFragment : Fragment(), GameAdapter.GameClickListener, KoinComponent {
                     platforms = game.platforms[0].name,
                     image = game.image.screen_large_url)
 
-                favoriteViewModel.addGame(favoriteGame)
+                gamesViewModel.addGame(favoriteGame)
                 bottomModelBinding.favoriteImageView.setImageResource(R.drawable.ic_baseline_favorite_24)
                 Toast.makeText(context, context?.resources?.getString(R.string.it_is_among_the_favourites), Toast.LENGTH_LONG).show()
             }else{
@@ -101,4 +111,17 @@ class GamesFragment : Fragment(), GameAdapter.GameClickListener, KoinComponent {
         }
         dialog.show ()
     }
+
+    /*fun startLoading() {
+        val builder = AlertDialog.Builder(this.context)
+        val inflater = requireActivity().layoutInflater
+        builder.setView(inflater.inflate(R.layout.popup_loading, null))
+        builder.setCancelable(true)
+        alertDialog = builder.create()
+        alertDialog.show()
+    }
+
+    fun dismissDialog() {
+        alertDialog.dismiss()
+    }*/
 }

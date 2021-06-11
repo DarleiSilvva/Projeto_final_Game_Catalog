@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:padding="5dp"
     app:layout_behavior="@string/bottom_sheet_behavior"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <ImageView
         android:id="@+id/dragImageView"

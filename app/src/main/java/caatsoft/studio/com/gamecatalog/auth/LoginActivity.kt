@@ -1,6 +1,7 @@
 package caatsoft.studio.com.gamecatalog.auth
 
 import android.Manifest
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -9,8 +10,11 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import caatsoft.studio.com.gamecatalog.ui.MainActivity
 import caatsoft.studio.com.gamecatalog.R
 import caatsoft.studio.com.gamecatalog.databinding.ActivityLoginBinding
+import caatsoft.studio.com.gamecatalog.dismissDialog
+import caatsoft.studio.com.gamecatalog.startLoading
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 
@@ -19,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var firebaseAuthStateListener: AuthStateListener
     private lateinit var activityLoginBinding: ActivityLoginBinding
+    private lateinit var alertDialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,15 +48,23 @@ class LoginActivity : AppCompatActivity() {
         })
 
         activityLoginBinding.loginButton.setOnClickListener {
+            alertDialog = startLoading()
             val email = activityLoginBinding.emailEditView.text.toString()
             val password = activityLoginBinding.passwordEditView.text.toString()
             if (email.isEmpty() || email == null ||
                     password.isEmpty() || password == null) {
+                dismissDialog(alertDialog)
                 Toast.makeText(this@LoginActivity, getString(R.string.please_fill_in_what_is_missing), Toast.LENGTH_SHORT).show()
             } else {
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this@LoginActivity) { task ->
                     if (!task.isSuccessful) {
+                        dismissDialog(alertDialog)
                         Toast.makeText(this@LoginActivity, getString(R.string.there_was_an_authentication_error_please_try_to_register_again_or_try_to_login), Toast.LENGTH_SHORT).show()
+                    } else{
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        startActivity(intent)
+                        dismissDialog(alertDialog)
+                        finish()
                     }
                 }
             }

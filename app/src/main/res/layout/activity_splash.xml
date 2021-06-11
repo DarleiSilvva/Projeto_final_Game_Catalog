@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple_200"
-    tools:context=".SplashActivity">
+    tools:context=".ui.SplashActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideVideo5"
